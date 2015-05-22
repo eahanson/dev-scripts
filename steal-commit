@@ -1,0 +1,15 @@
+#!/bin/sh
+
+REPO_DIR=$1
+SHA=$2
+
+if [ -z "$REPO_DIR" ] || [ -z "$SHA" ]; then
+  echo "Steals a commit from another repo to this repo"
+  echo "USAGE: $0 <source-repo-dir> <sha-to-steal>"
+  exit 1
+fi
+
+echo $REPO_DIR
+echo $SHA
+
+git --git-dir=$REPO_DIR/.git format-patch -k -1 --stdout $SHA | git am -3 -k
