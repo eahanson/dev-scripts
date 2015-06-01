@@ -2,6 +2,7 @@
 
 Scripts to make development easier.
 
-## steal-commit
+### steal-commit
 
-Copy a commit from one repo into the current repo.
+Steals a commit from another repo to this repo:
+`steal-commit <source-repo-dir> <sha-to-steal>`
