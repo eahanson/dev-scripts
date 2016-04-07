@@ -1,0 +1,19 @@
+#!/bin/sh
+
+PATTERN=$1
+
+if [ -z "$PATTERN" ]; then
+  echo "Kill processes matching pattern"
+  echo "USAGE: $0 <pattern>"
+  exit 1
+fi
+
+function processes {
+  echo "Processes matching '$PATTERN':"
+  ps aux | grep -i $PATTERN | grep -v grep | grep -v $0
+  echo
+}
+
+processes
+killall -m $PATTERN
+processes
